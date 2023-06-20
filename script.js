@@ -1,4 +1,3 @@
-// Your script here.
 // scripts.js
 window.addEventListener("DOMContentLoaded", function () {
   const userInput = document.getElementById("userInput");
@@ -10,7 +9,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   function startTimer(duration) {
     const startTime = new Date().getTime();
-    const endTimeValue = new Date(startTime + duration * 60 * 1000);
+    const endTimeValue = new Date().getTime() + duration * 60 * 1000;
 
     updateTimer();
 
@@ -23,12 +22,20 @@ window.addEventListener("DOMContentLoaded", function () {
       if (remainingTime <= 0) {
         clearInterval(timerId);
         countDown.textContent = "Countdown Finished";
-        endTime.textContent = "End Time: " + formatTime(endTimeValue);
+        endTime.textContent =
+          "End Time: " +
+          new Date(endTimeValue).getHours() +
+          ":" +
+          new Date(endTimeValue).getMinutes();
         return;
       }
 
       countDown.textContent = "Remaining Time: " + formatTime(remainingTime);
-      endTime.textContent = "End Time: " + formatTime(endTimeValue);
+      endTime.textContent =
+        "End Time: " +
+        new Date(endTimeValue).getHours() +
+        ":" +
+        new Date(endTimeValue).getMinutes();
     }
   }
 
